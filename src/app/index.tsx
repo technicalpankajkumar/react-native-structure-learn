@@ -13,10 +13,6 @@ export default function IndexScreen() {
       <Link href={'/second'} push asChild>
         <Button title="Go to second screen" />
       </Link>
-      <Link href={'/third'} push asChild>
-       <Button title="Go to third screen"/>
-      </Link>
-        <Button title="Go to fifth screen" onPress={()=>router.push('/(anything)/(fourth)/(fifth)')}/>
     </View>
   );
 }
