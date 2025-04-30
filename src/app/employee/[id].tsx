@@ -2,7 +2,7 @@
 
 import { View, Text } from 'react-native'
 import React from 'react'
-import { useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams } from 'expo-router';
 
 const data = [
     { name: "Pankaj", id: 1, title: "Software Engineer" },
@@ -22,6 +22,8 @@ const EmployeeDetails = () => {
     const employees = data.find((employee) => employee.id === Number(params?.id));
   return (
     <View className='bg-slate-300 p-4 flex-1'>
+      {/* for dynamic title change any screens */}
+      {/* <Stack.Screen options={{ title: employees?.title }} />  */}
       <Text className='text-center text-2xl font-bold'>Employee Details</Text>
       <View>
         <Text>Id: {employees?.id}</Text>
