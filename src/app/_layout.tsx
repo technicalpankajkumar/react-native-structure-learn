@@ -1,92 +1,65 @@
-import { Slot, Stack } from "expo-router";
+import { Slot, Stack, Tabs } from "expo-router";
 import "../../global.css";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
+import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function RootLayout() {
   return (
     <React.Fragment>
       <StatusBar style="auto" />
-      <Stack >
-        {/* <Stack.Screen name="employee/[department]/[id]" options={{ title: "Employee Details" }} />  */} 
-        {/* use for static given title of particular screens */}
-        <Stack.Screen name={"second"}  options={{animation:"fade"}}/>
-        </Stack>
+      <Tabs screenOptions={{
+        tabBarActiveTintColor:"#fff",
+        tabBarInactiveTintColor:"#000",
+        tabBarShowLabel:false,
+        tabBarBackground:()=>(<View className="bg-[#3C999E] h-16 w-full rounded-t-3xl shadow-lg absolute bottom-0" />)}}
+        backBehavior="order"
+        >
+        <Tabs.Screen
+          name="(home)"
+          options={{
+            title: "Home",
+            headerShown: false,
+            tabBarIcon: ({ color ,size,focused}) => (<AntDesign name="home" size={24} color={color} />)
+          }}
+          />
+          <Tabs.Screen 
+          name="second"
+          options={{
+            title:"Second",
+            popToTopOnBlur:true, // this will remove the tab bar persistance route
+            headerShown:false,
+            tabBarIcon:({color,size})=>(<MaterialCommunityIcons name="server-security" size={24} color={color} />)
+          }}
+          />
+          <Tabs.Screen
+          name="third"
+          options={{
+            title:"Third",
+            headerShown:true,
+            // href:null, // this will remove the tab bar in tabs screen
+            tabBarIcon:({color,size})=>(<FontAwesome name="product-hunt" size={24} color={color} />)
+          }}
+          />
+          <Tabs.Screen
+          name="fourth"
+          options={{
+            title:"Blogger",
+            tabBarBadge:"29",
+            tabBarBadgeStyle:{
+              backgroundColor:"#fff",
+              color:"#000",
+              fontSize:10
+            },
+            headerShown:true,
+            tabBarIcon:({color,size})=>(<FontAwesome5 name="blogger" size={24} color={color} />)
+          }}
+          />
+        </Tabs>
     </React.Fragment>
   );
 }
-
-
-// export const unstable_settings = {
-  //   initialRouteName: "index",   
-// }
-// screen options
-// screen option in stack navigator
-// export const screenOptions = {
-//   headerShown: false,
-//   headerStyle: {
-//     backgroundColor: "#f4511e",
-//   },
-//   headerTintColor: "#fff",
-//   headerTitleStyle: {  
-//     fontWeight: "bold",
-//   },
-//   headerTitleAlign: "center",
-//   headerBackTitle: "Back",
-//   headerBackTitleStyle: {
-//     fontSize: 16,
-//     fontWeight: "bold",
-//   },
-//   headerBackImage: () => (
-//     <Image
-//       source={require("../assets/back.png")}
-//       style={{ width: 20, height: 20 }}
-//     />
-//   ),
-//   headerBackImageTintColor: "#fff",
-//   headerBackTitleVisible: true,
-//   headerBackTitleStyle: {
-//     fontSize: 16,
-//     fontWeight: "bold",
-//   },
-//   headerBackButtonMenuEnabled: true,
-
-//   headerBackButtonMenuVisible: true,
-//   headerBackButtonMenuStyle: {
-//     backgroundColor: "#f4511e",
-//     borderRadius: 10,
-//     padding: 10,
-//   },
-//   headerBackButtonMenuTitle: "Back",
-//   headerBackButtonMenuTitleStyle: {
-  //     fontSize: 16,
-  //     fontWeight: "bold",
-  //   },
-//   headerBackButtonMenuIcon: () => (
-//     <Image 
-//       source={require("../assets/back.png")}
-//       style={{ width: 20, height: 20 }}
-//     />
-//   ),
-//   headerBackButtonMenuIconTintColor: "#fff",
-//   headerBackButtonMenuIconStyle: {
-  //     width: 20,
-  //     height: 20,
-  //   },
-//   headerBackButtonMenuIconVisible: true,
-//   headerBackButtonMenuIconTitle: "Back",
-//   headerBackButtonMenuIconTitleStyle: {
-  //     fontSize: 16,
-  //     fontWeight: "bold",
-  //   },
-//   headerBackButtonMenuIconTitleVisible: true,
-//   headerBackButtonMenuIconTitleStyle: {
-  //     fontSize: 16,
-  //     fontWeight: "bold",
-  //   },
-// }
-
-
-//screen animation
-{/* <Stack.Screen name={"screen-name"}  options={{animation:"fade_from_bottom"}}/> */}

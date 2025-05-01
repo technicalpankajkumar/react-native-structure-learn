@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const fouth = () => {
+const product = () => {
   return (
     <View>
-      <Text>fouth</Text>
+      <Text>product</Text>
     </View>
   )
 }
 
-export default fouth
+export default product
